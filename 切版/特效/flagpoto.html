@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flagpoto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* 100%窗口寬高 */
+            height: 100vh;
+            /* 水平垂直置中 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 隱藏溢出 */
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image {
+            width: 100%;
+            height: 100%;
+            background-image: url('/poto/pexels-chandri-anggara-12374280.jpg');
+            /* 不平鋪 */
+            background-repeat: no-repeat;
+            /* 保持圖像比 切長邊 */
+            background-size: cover;
+            /* 定位正中 */
+            background-position: center;
+            /* 固定背景圖 */
+            background-attachment: fixed;
+            filter: blur(6px);
+            overflow: hidden;
+        }
+
+        /* 半透明盟版 */
+        .image::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            position: absolute;
+        }
+/* 高清圖 */
+        .cursor{
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 8px solid rgba(255, 255, 255, 0.25);
+            position: absolute;
+            /* top: 0; */
+            background-image: url(/poto/pexels-chandri-anggara-12374280.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image"></div>
+        <div class="cursor"></div>
+    </div>
+
+
+    <script>
+        // 要操作的元素
+        const container=document.querySelector('.container');
+        const cursor=document.querySelector('.cursor') 
+
+// 綁定滑鼠事件
+        container.addEventListener('mousemove',function(e){
+            // 獲取container cursor大小和視口位置
+            let contRect=container.getBoundingClientRect()
+            let cursRect=cursor.getBoundingClientRect()
+// 計算高清圖位置(跟滑鼠)
+            let cursX=e.clientX-contRect.left-cursRect.width/2;
+            let cursY=e.clientY-contRect.top-cursRect.height/2;
+            // 設定高清圖位置
+            cursor.style.left=`${cursX}px`;
+            cursor.style.top=`${cursY}px`
+
+        })
+    </script>
+</body>
+
+</html>

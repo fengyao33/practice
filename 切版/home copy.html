@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just-Go</title>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", serif;
+        }
+
+        body {
+            height: 400vh;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(12, 3, 51, 0.3), rgba(12, 3, 51, 0.3));
+            position: relative;
+            padding: 0 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav ul li {
+            list-style: none;
+            display: inline-block;
+            margin-left: 40px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-size: 17px;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .content h1 {
+            font-size: 100px;
+            color: aliceblue;
+            font-weight: 600;
+        }
+
+        .content a {
+            text-decoration: none;
+            display: inline-block;
+            color: aliceblue;
+            font-size: 24px;
+            border: 2px solid #fff;
+            padding: 14px 70px;
+            border-radius: 50px;
+            margin-top: 20px;
+
+        }
+
+        .back-video {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        p {
+            color: rgb(255, 255, 255);
+            font-size: 80px;
+        }
+
+        @media(min-aspect-ratio:16/9) {
+            .back-video {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media(max-aspect-ratio:16/9) {
+            .back-video {
+                width: auto;
+                height: 100%;
+            }
+
+        }
+
+        .content h1:hover {
+            -webkit-text-stroke: 2px #fff;
+            color: transparent;
+
+        }
+
+
+        nav.sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 10px 8%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 2;
+            transition: padding 0.5s;
+        }
+
+        nav.sticky ul {
+            width: auto;
+        }
+
+        .outside {
+            border: 50px groove rgba(252, 200, 216, 0.3);
+            position: relative;
+            height: 600px;
+            width: 800px;
+            top: 100px;
+            margin-left: 5%;
+
+        }
+
+     
+
+        .b1 {
+            border: 1px solid #000;
+            position: relative;
+            width: 310px;
+            height: 444px;
+            left: 60px;
+            top: 773px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="loader">
+        <video autoplay muted loop plays-inline class="loadervideo">
+            <source src="/viedo/LOGO展示.mp4" type="video/mp4">
+        </video>
+    </div> -->
+
+    <div class="container">
+
+        <video autoplay muted loop plays-inline class="back-video">
+            <source src="./viedo/production ID_4782135.mp4" type="video/mp4">
+        </video>
+        <nav id="navbar">
+            <img class="logo" src="./poto/logo.png" alt="">
+            <ul id="menu">
+                <li><a href="#">規劃行程 </a></li>
+                <li><a href="#">行程推薦</a></li>
+                <li><a href="#">我的行程</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <!-- <h1>Just-Go</h1> -->
+            <h1><span class="auto-type"></span></h1>
+            <a href="#">開始規劃</a>
+        </div>
+    </div>
+    <div class="outside">
+        <div class="b1"></div>
+        <div class="inside"></div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="/javascripts/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        //         $(window).load(function() { // 確認整個頁面讀取完畢再將這三個div隱藏起來
+        //     $(".loader").delay(500).fadeOut(1000); //delay --> 延遲幾秒才fadeOut
+        //     // $("#preloader").delay(7000).fadeOut(3000);
+        // })
+
+
+        // var loader = document.getElementsByClassName("loader");
+        // window.addEventListener("load", function () {
+        //     loader.style.display = "none";
+        // })
+
+
+        // $(function(){
+        //     setTimeout(function(){
+        //         $(".loader").hide();
+        //     },300);
+        // })    
+
+
+
+
+        var nacbar = document.getElementById("navbar");
+        var menu = document.getElementById("menu");
+
+        window.onscroll = function () {
+            if (window.pageYOffset >= menu.offsetTop) {
+                navbar.classList.add("sticky");
+            }
+            else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+
+        var typed = new Typed(".auto-type", {
+            strings: ["還在為排行程煩惱嗎??", "旅行也可以很簡單"],
+            typeSpeed: 120,
+            backSpeed: 100,
+            loop: false
+        })
+    </script>
+</body>
+
+</html>

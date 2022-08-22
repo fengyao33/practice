@@ -1,0 +1,440 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
+
+
+        <title>Document</title>
+        <style>
+            /* 重製html */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                /* html設定10px  rem=1 = 10px 
+                改變參數能變成手機模式變小*/
+                font-size: 10px;
+            }
+
+            body {
+                font-family: "Lato", sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 1.7;
+                color: #777;
+                padding: 30px;
+
+            }
+
+            .header {
+                height: 95vh;
+                background-image: linear-gradient(to right bottom,
+                        rgba(126, 213, 111, 0.8),
+                        rgba(40, 180, 131, 0.8)),
+                    url(/poto/pexels-aleksejs-bergmanis-681335.jpg);
+                background-size: cover;
+                /* 保持縮小圖片不變 */
+                background-position: top;
+
+                /* 裁剪 */
+                clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+                position: relative;
+            }
+
+
+            .logo-box {
+                position: absolute;
+                top: 40px;
+                left: 50px;
+            }
+
+            .logo {
+                height: 35px;
+            }
+
+
+            .text-box {
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                /* 置中 扣除本身位置 */
+                transform: translate(-50%, -50%);
+                /* 影響a元素 */
+                text-align: center;
+            }
+
+            .heading-primary {
+                color: #fff;
+                /* 字母大寫 */
+                text-transform: uppercase;
+                margin-bottom: 60px;
+            }
+
+            .heading-primary-main {
+                display: block;
+                font-size: 60px;
+                font-weight: 400;
+                /* 字體間距 */
+                letter-spacing: 35px;
+
+
+                /* 設定動畫 */
+                animation-name: moveInLeft;
+                animation-duration: 1s;
+
+                animation-timing-function: ease-out;
+
+                /* 其他參數
+            延遲 animation-delay: 3s 
+            疊代次數   animation-iteration-count: 2;
+            */
+            }
+
+            .heading-primary-sub {
+                display: block;
+                font-size: 20px;
+                font-weight: 400;
+                letter-spacing: 15px;
+                /* 動畫簡寫 */
+                animation: moveInRight 1s ease-out;
+            }
+
+            /* 製作片頭動畫 */
+            @keyframes moveInLeft {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-100px);
+                }
+
+                80% {
+                    transform: translate(10px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translate(0);
+                }
+            }
+
+            @keyframes moveInRight {
+                0% {
+                    opacity: 0;
+                    transform: translateX(100px);
+                }
+
+                80% {
+                    transform: translate(-10px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translate(0);
+                }
+            }
+
+            @keyframes moveInBotton {
+                0% {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translate(0);
+                }
+            }
+
+            .btn:link,
+            .btn:visited {
+                text-decoration: none;
+                padding: 15px 40px;
+                /* 行內區塊 避免切到上面H1 */
+                display: inline-block;
+                border-radius: 100px;
+                /* 過度屬性 設置於全部改變 */
+                transition: all .2s;
+                position: relative;
+
+            }
+
+            .btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+            }
+
+            .btn:active {
+                transform: translateY(-1px);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+
+            }
+
+            .btn-white {
+                background-color: #fff;
+                color: #777;
+            }
+
+            .btn::after {
+                content: "";
+                display: inline-block;
+                height: 100%;
+                width: 100%;
+                border-radius: 100px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: all .4s;
+            }
+
+            .btn-white::after {
+                background-color: #fff;
+            }
+
+            .btn:hover::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+            }
+
+            .btn-animated {
+                /* .75 延遲時間 */
+                animation: moveInBotton .5s ease-out .75s;
+                /* 動畫開始前樣式為0 */
+                animation-fill-mode: backwards;
+            }
+
+
+            /* L5導航 */
+            :root {
+                --color-primary: #55c57a;
+                --color-primary-light: #7ed56f;
+                --color-primary-dark: #28b485;
+
+            }
+
+
+
+            /* .navigation */
+            .navigation__checkbox {
+                display:none ;
+               
+            }
+
+            .navigation__button {
+                background-color: white;
+                height: 7rem;
+                width: 7rem;
+                position: fixed;
+                top: 6rem;
+                right: 6rem;
+                border-radius: 50%;
+                z-index: 2000;
+                box-shadow: 0 1rem 3rem black .1;
+
+
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .navigation__background {
+                height: 6rem;
+                width: 6rem;
+                border-radius: 50%;
+                /* fixed 滾動時不會改變位置 */
+                position: fixed;
+                top: 6.5rem;
+                right: 6.5rem;
+                background-image: radial-gradient(var(--color-primary-light), var(--color-primary-dark));
+                z-index: 1000;
+
+                /* 用於展開過度 */
+                transition: transform .8s;
+                /* transform: scale(80); */
+            }
+
+            .navigation__nav {
+                height: 100VH;
+                /* width: 100%; */
+                position: fixed;
+                top: 0;
+                right: 0;
+                z-index: 1500;
+
+                /* 寬度改0讓使用前不能用 */
+                opacity: 0;
+                width: 0;
+                /* 用於展開過度 */
+                transition: all .8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            }
+
+            .navigation__list {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                list-style: none;
+                text-align: center;
+            }
+
+            .navigation__item {
+                margin: 1rem;
+            }
+
+            .navigation__link:link,
+            .navigation__link:visited {
+                /* display偏移用 */
+                display: inline-block;
+                font-size: 3rem;
+                font-weight: 300;
+                padding: 1rem 2rem;
+                color: aliceblue;
+                text-decoration: none;
+                text-transform: uppercase;
+                /* 建變位置切中間 */
+                /* background-image: linear-gradient(120deg, orangered 0%, orangered 50%, white 50%); */
+                background-image: linear-gradient(120deg, transparent 0%, transparent 50%, white 50%);
+
+                /* background-size改變漸變位置 */
+                background-size: 220%;
+                /* 曲線參考網站   easings.net */
+                transition: all .4s cubic-bezier(0.22, 1, 0.36, 1);
+
+            }
+
+            .navigation__link span {
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+
+            .navigation__link:hover,
+            .navigation__link:active {
+                background-position: 100%;
+                color: var(--color-primary-dark);
+                /* 偏移 */
+                transform: translateX(1rem);
+            }
+
+            /* 用於展開navibar */
+            .navigation__checkbox:checked~.navigation__background {
+                transform: scale(80);
+            }
+
+            .navigation__checkbox:checked~.navigation__nav {
+                opacity: 1;
+                width: 100%;
+            }
+
+            /* navi----icon */
+
+
+            .navigation__icon {
+                position: relative;
+                margin-top: 3.5rem;
+                margin-left:1.3rem;
+            }
+
+            .navigation__icon,
+            .navigation__icon::before,
+            .navigation__icon::after {
+                width: 3rem;
+                height: 2px;
+                background-color: #777;
+                display: inline-block;
+            }
+
+            .navigation__icon::after,
+            .navigation__icon::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                transition: all .2s;
+            }
+            .navigation__icon::before{top:-.8rem;}
+            .navigation__icon::after{top:.8rem;}
+
+            .navigation__button:hover .navigation__icon::before{
+                top: -1rem;
+            }
+            .navigation__button:hover .navigation__icon::after{
+                top: 1rem; 
+            }
+
+            /* 點擊消失中間 */
+            .navigation__checkbox:checked +  .navigation__button  .navigation__icon
+            {
+                background-color: transparent;
+            }
+            .navigation__checkbox:checked +  .navigation__button  .navigation__icon::before
+            {
+                top:0;
+                transform: rotate(-45deg);
+            }
+            .navigation__checkbox:checked +  .navigation__button  .navigation__icon::after
+            {
+                top: 0;
+                transform: rotate(-45deg);
+            }
+
+            .ttest{
+                height: 800px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+<div class="ttest">
+        <iframe src='https://my.spline.design/molang3dcopy-5a9042cdf99320a6bb513bf263532bb1/' frameborder='0' width='100%' height='100%'></iframe>
+</div>
+        <div class="navigation">
+            <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+
+            <label for="navi-toggle" class="navigation__button">
+                <span class="navigation__icon">&nbsp;</span>
+            </label>
+
+            <div class="navigation__background">&nbsp;</div>
+
+            <nav class="navigation__nav">
+                <ul class="navigation__list">
+                    <li class="navigation__item"><a href="#" class="navigation__link
+                    "><span>01</span> natous</a></li>
+                    <li class="navigation__item"><a href="#" class="navigation__link
+                        "><span>01</span> natous</a></li>
+                    <li class="navigation__item"><a href="#" class="navigation__link
+                            "><span>01</span> natous</a></li>
+                    <li class="navigation__item"><a href="#" class="navigation__link
+                            "><span>01</span> natous</a></li>
+                    <li class="navigation__item"><a href="#" class="navigation__link
+                                    "><span>01</span> natous</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <header class="header">
+            <div class="logo-box">
+                <img src="/poto/logo.png" alt="LOGO" class="logo">
+            </div>
+            <div class="text-box">
+                <h1 class="heading-primary">
+                    <span class="heading-primary-main">好玩</span>
+                    <span class="heading-primary-sub">就去玩</span>
+                </h1>
+
+                <a href="#" class="btn btn-white btn-animated">按鈕</a>
+            </div>
+
+        </header>
+    </body>
+
+    </html>

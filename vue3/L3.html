@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/vue.js"></script>
+</head>
+<body>
+    <div id="vu">
+        <button v-on:click="add()">Add</button>
+        <button @click="counter++">Add</button>
+
+        <button @clicl="counter-- ">delete</button>
+        <p>Result:{{counter}}</p>
+
+        <input  type="text" v-bind:value="name" v-on:input="setName">
+        <button>Reset</button>
+        <p>name:{{name}}</p>
+        <form v-on:submit="sform">
+            <input type="text">
+            <button v-on:click="reset">sign up</button>
+        </form>
+
+    </div>
+
+    <script>
+        const app={
+            data(){
+                return{
+                    counter:0,
+                    nane:''
+                }
+            },
+            methods:{
+                //preventDefault可以停submit傳送後的重載
+                sform(event){
+                    event.preventDefault();
+                    alter('送出');
+                },
+                // Js擷取只用者輸入
+                setName(event){
+                    this.name =event.target.value; 
+                },
+                add(){
+                    this.counter++
+                },
+                reset(){
+                    this.name='';
+                }
+            }
+         
+        }
+        Vue.createApp(app).mount('#vu')
+    </script>
+</body>
+</html>

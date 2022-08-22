@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <laben class="goal">添加</laben>
+            <input type="text" id="goal" v-model="enterValue">
+            <button v-on:click="addGoal">Add Goal</button>
+        </div>
+    </div>
+    <ul>
+        <li v-for="goal in goals">{{goal}}</li>
+    </ul>
+   
+   
+    <script>
+        //  javascript方法 
+        // const buttomEl = document.querySelector('button');
+        // const inputEl = document.querySelector('input');
+        // const listEl = document.querySelector('ul')
+
+        // function addlist(){ 
+        //     const enteredValue = inputEl.value;
+        //     const listItemEl = document.createElement('li');
+        //     listItemEl.textContent=enteredValue;
+        //     listEl.appendChild(listItemEl);
+        // }
+
+        // buttomEl.addEventListener('click',addlist);
+        // <!-- Vue方法 -->
+    Vue.createApp({
+        data(){
+            return{
+                goals:[],
+                enterValue:""
+            };
+        }, 
+        methods:{
+            addGoal(){
+                this.goals.push(this.enterValue);
+            }
+
+        }
+    }).mount('#app');
+    </script>
+    
+</body>
+</html>

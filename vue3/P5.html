@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/vue.js"></script>
+</head>
+<body>
+    <div id="wow">
+        <input type="text" v-model="enteredGoalValue">
+        <p v-if="goals.length === 0">輸入消失</p>
+        <button @click="add">Add Goal</button>
+        <ul>
+            <li v-for="(goal) in goals">{{goal}}</li>
+        </ul>
+        <!-- 添加索引 -->
+        <ul>
+            <li v-for="(goal, 索引值) in goals">{{goal}}-{{索引值}}</li>
+        </ul>
+
+
+        <input type="text" v-model="kv" >
+        <button @click="add2">KV按鈕</button>
+        <ul>
+            <li v-for="vaule , key  in {name:'Tom',age:31}">{{vaule}}{{key}}</li>
+        </ul>
+    </div>
+   
+
+
+    <script>
+        const app={
+            data(){
+                return{
+                    kv:'',
+                    enteredGoalValue:'',
+                    goals:[],
+                    kvv:[]
+                }
+            },methods:{
+                add(){
+                    this.goals.push(this.enteredGoalValue);
+                },
+                add2(){
+                    this.kvv.push(this.kv)
+                }
+            }
+        }
+        Vue.createApp(app).mount('#wow')
+    </script>
+</body>
+</html>

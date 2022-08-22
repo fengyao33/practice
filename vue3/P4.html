@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/vue.js"></script>
+</head>
+<body>
+    <div id="q"> 
+        <h2>123</h2>
+        <button v-on:click="alter">0</button>
+        <input type="text" v-on:input="setoutput">
+        <p>{{ouput}}00</p>
+    </div>
+ 
+    
+
+    <script>
+        const app={
+            data(){
+                return{
+                    output:''
+                }
+            },
+            methons:{
+                setoutput(event){
+                    this.output = event.target.value;
+                },
+                alert(){
+                    alert('ya')
+                    console.log('123')
+                }
+            }
+
+        }
+        Vue.createApp(app).mount('#q')
+    </script>
+</body>
+</html>

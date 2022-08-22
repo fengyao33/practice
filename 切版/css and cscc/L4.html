@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css and cscc/css/iconstyles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
+
+
+    <title>Document</title>
+    <style>
+        /* 重製html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            /* html設定10px  rem=1 = 10px 
+                改變參數能變成手機模式變小*/
+            font-size: 10px;
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #777;
+            padding: 30px;
+
+        }
+
+        .header {
+            height: 95vh;
+            background-image: linear-gradient(to right bottom,
+                    rgba(126, 213, 111, 0.8),
+                    rgba(40, 180, 131, 0.8)),
+                url(../poto/pexels-aleksejs-bergmanis-681335.jpg);
+            background-size: cover;
+            /* 保持縮小圖片不變 */
+            background-position: top;
+
+            /* 裁剪 */
+            clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+            position: relative;
+        }
+
+
+        .logo-box {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+        }
+
+        .logo {
+            height: 35px;
+        }
+
+
+        .text-box {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            /* 置中 扣除本身位置 */
+            transform: translate(-50%, -50%);
+            /* 影響a元素 */
+            text-align: center;
+        }
+
+        .heading-primary {
+            color: #fff;
+            /* 字母大寫 */
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        .heading-primary-main {
+            display: block;
+            font-size: 60px;
+            font-weight: 400;
+            /* 字體間距 */
+            letter-spacing: 35px;
+
+
+            /* 設定動畫 */
+            animation-name: moveInLeft;
+            animation-duration: 1s;
+
+            animation-timing-function: ease-out;
+
+            /* 其他參數
+            延遲 animation-delay: 3s 
+            疊代次數   animation-iteration-count: 2;
+            */
+        }
+
+        .heading-primary-sub {
+            display: block;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 15px;
+            /* 動畫簡寫 */
+            animation: moveInRight 1s ease-out;
+        }
+
+        /* 製作片頭動畫 */
+        @keyframes moveInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+
+            80% {
+                transform: translate(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(0);
+            }
+        }
+
+        @keyframes moveInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            80% {
+                transform: translate(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(0);
+            }
+        }
+
+        @keyframes moveInBotton {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(0);
+            }
+        }
+
+        .btn:link,
+        .btn:visited {
+            text-decoration: none;
+            padding: 1.5rem 4rem;
+            /* 行內區塊 避免切到上面H1 */
+            display: inline-block;
+            border-radius: 10rem;
+            /* 過度屬性 設置於全部改變 */
+            transition: all .2s;
+            position: relative;
+
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+
+        }
+
+        .btn-white {
+            background-color: #fff;
+            color: #777;
+        }
+
+        .btn::after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            border-radius: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all .4s;
+        }
+
+        .btn-white::after {
+            background-color: #fff;
+        }
+
+        .btn:hover::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+
+        .btn-animated {
+            /* .75 延遲時間 */
+            animation: moveInBotton .5s ease-out .75s;
+            /* 動畫開始前樣式為0 */
+            animation-fill-mode: backwards;
+        }
+
+
+        /* L2 */
+        :root {
+            --color-primary: #55c57a;
+            --color-primary-light: #7ed56f;
+            --color-primary-dark: #28b485;
+
+        }
+
+        .section-about {
+            background-color: #f7f7f7;
+            padding: 25rem 0;
+            margin-top: -20vh;
+            height: 940px;
+        }
+
+        .heading-secondary {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+
+            display: inline-block;
+            /* 設定漸變顏色 但是會超出字體 所以用inline-block  */
+            background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+            /* 背景剪輯 要將字體顏色改透明才會顯現 */
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: .2rem;
+            transition: all .2s;
+
+        }
+
+        .row {
+            max-width: 114rem;
+            /* background-color: #eee; */
+            margin: 0 auto;
+        }
+
+        .row:not(last-child) {
+            /* 等於 scss  &:not(:last-child)
+            除了最後一個之外 */
+            margin-bottom: 80rem;
+        }
+
+        .heading-secondary:hover {
+            transform: skewX(0) skewY(2deg) scale(1.1);
+            text-shadow: .5rem 1rem 2rem rgba(0, 0, 0, .2);
+        }
+
+        .u-center-text {
+            text-align: center;
+        }
+
+        /* 補充 [] 選擇器 [class^="col-""] 選擇開頭col-的全部 */
+        [class^="col-"] {
+            float: left;
+            margin-right: 20px;
+        }
+
+        .col-1-of-2 {
+            /* 用calc計算 8rem=兩個欄位的寬度 */
+            width: calc((100% - 18rem)/2);
+            /* background-color: blue; */
+            float: left;
+            margin-right: 20px;
+        }
+
+        .col-1-of-3 {
+            width: calc((100% - 18rem)/3);
+        }
+
+        .col-1-of-4 {
+            width: calc((100% - 18rem)/4);
+        }
+
+        .row::after {
+            /* 修復子元素col float造成的塌陷 */
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .u-margin-bottom-8 {
+            margin-bottom: 8rem;
+        }
+
+        .heading-tertiary {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .paragraph {
+            font-size: 1.6rem;
+            margin-bottom: 3rem;
+        }
+
+        /* 按鈕 */
+        .btn-text,
+        .btn-text:link,
+        .btn-text:visited {
+            font-size: 1.6rem;
+            color: var(--color-primary);
+            display: inline-block;
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-primary);
+            padding: 3px;
+            transition: all .2s;
+        }
+
+        .btn-text:hover {
+            background-color: var(--color-primary);
+            color: #eee;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, .15);
+            transform: translateY(-2px);
+
+        }
+
+        .btn-text:active {
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+            transform: translateY(-2px);
+        }
+
+
+        /* 照片 */
+        .composition {
+            position: relative;
+
+        }
+
+        .composition__photo {
+            width: 55%;
+            box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .4);
+            /* border-radius: 2px; */
+            position: absolute;
+            z-index: 10;
+            transition: all .2s;
+
+            /* 外框偏移 */
+            outline-offset: 2rem;
+
+        }
+
+        .composition__photo--p1 {
+            left: 0;
+            top: -2rem;
+        }
+
+        .composition__photo--p2 {
+            right: 0;
+            top: 2rem;
+        }
+
+        .composition__photo--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        .composition__photo:hover {
+            outline: 1.5rem solid var(--color-primary);
+
+            transform: scale(1.05);
+            box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .5);
+            z-index: 20;
+        }
+
+        .composition:hover .composition__photo:not(:hover) {
+            /* 選到時候 沒選到的變小 */
+            transform: scale(.8);
+        }
+
+
+        /* 卡片 */
+
+        .feature-box {
+            background-color: rgba(255, 255, 255, .8);
+            font-size: 1.5rem;
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: 3px;
+            box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .15);
+            transition: transform .3s;
+            overflow: hidden;
+            /* width: 180px; */
+
+        }
+
+        .feature-box__icon {
+            font-size: 6rem;
+            margin-bottom: .5rem;
+            display: inline-block;
+            background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+            -webkit-background-clip: text;
+            color: transparent;
+
+        }
+
+        .feature-box:hover {
+            transform: translateY(-1.5rem) scale(1.03);
+
+        }
+
+
+        .section-features {
+            height: 700px;
+            padding: 20rem 0;
+            background-image: linear-gradient(to right bottom,
+                    rgba(126, 213, 111, 0.8),
+                    rgba(40, 180, 131, 0.8)),
+                url(../poto/pexels-aleksejs-bergmanis-681335.jpg);
+            background-size: cover;
+            transform: skewY(-7deg);
+            margin-top: -10rem;
+        }
+
+        /* 子類選擇器 */
+        .section-features>* {
+            transform: skewY(7deg);
+
+        }
+
+        .section-tours {
+            /* background-color: var(--color-primary-light); */
+            padding: 25rem 0 50rem 0;
+            margin-top: -18rem;
+        }
+
+
+        /* 選轉卡片正面 */
+        :root {
+            --C1l: #ffb900;
+            --C1d: #ff7730;
+            --C2l: #2998ff;
+            --C2d: #5643fa;
+        }
+
+        .card {
+            /* 透視 */
+            perspective: 150rem;
+            position: relative;
+
+            /* card__side 設置絕對定位造成這欄位塌陷 要補回高度用相同高度 */
+            height: 50rem;
+
+
+        }
+
+        .card__side {
+            /* background-color: rebeccapurple; */
+            height: 50rem;
+            transition: all .8s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* 背面可見性 */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+
+            border-radius: 3px;
+            box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .15);
+        }
+
+        .card__side--front {
+            background-color: rgb(255, 255, 255);
+
+
+        }
+
+        .card__side--back {
+            transform: rotateY(180deg);
+
+        }
+
+        .card__side--back-1 {
+            background-image: linear-gradient(to right bottom, var(--C1l), var(--C1d))
+        }
+
+        .card:hover .card__side--front {
+            /* 留意2面選轉有沒有一致性 */
+            transform: rotateY(-180deg);
+        }
+
+        .card:hover .card__side--back {
+            transform: rotateY(0deg);
+        }
+
+        .card__picture {
+            background-size: cover;
+            height: 23rem;
+
+            /* 背景混和模式 */
+            background-blend-mode: screen;
+
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .card__picture--1 {
+            background-image: linear-gradient(to right bottom, var(--C1l), var(--C1d)), url(../poto/photo-1656675403608-a0815ada8622.avif);
+        }
+
+        .card__heading {
+            font-size: 2.8rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            text-align: right;
+            color: #fff;
+            position: absolute;
+            top: 12rem;
+            right: 2rem;
+            width: 75%;
+        }
+
+        .card__heading-span {
+            padding: 1rem 1.5rem;
+
+            /* 幫助兩行文字都能用到padding */
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
+
+        .card__heading-span-1 {
+            background-image: linear-gradient(to right bottom,
+                    rgb(255, 132, 0.85),
+                    rgb(255, 132, 100.85));
+        }
+
+        .card__details {
+            padding: 3rem;
+        }
+
+        .card__details ul {
+            list-style: none;
+            /* 寬度用來做底線效果 */
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .card__details ul li {
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 1rem;
+        }
+
+        .card__details ul li:not(:last-child) {
+            border-bottom: 1px solid #eee;
+        }
+
+
+        /* 選轉卡片背面 */
+
+        .card__cta {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            text-align: center;
+        }
+
+        .card__price-box {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 8rem;
+        }
+
+        .card__price-only {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+
+        }
+
+        .card__price-value {
+            font-size: 6rem;
+            font-weight: 100;
+        }
+
+        /* L4 */
+        .section-stories {
+            padding: 15rem 0;
+            /* background-color: #777; */
+            position: relative;
+        }
+
+        .story {
+            width: 75%;
+            margin: 0 auto;
+            box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
+            background-color: rgba(255, 255, 255, 0.615);
+            /* background-color: #fff; */
+            border-radius: 3px;
+            padding: 6rem;
+            padding-left: 9rem;
+            font-size: 1.6rem;
+            transform: skewX(-12deg);
+        }
+
+        .story__shape {
+            width: 15rem;
+            height: 15rem;
+            /* background-color: brown; */
+            float: left;
+            /* 圖形環繞字體(半徑 at 位置X Y) */
+            /* -webkit-shape-outside: circle(50% at 50% 50%); */
+            shape-outside: circle(50% at 50% 50%);
+            /* 圓形切割 */
+            clip-path: circle(50% at 50% 50%);
+            transform: translateX(-3rem) skewX(12deg);
+            position: relative;
+
+
+        }
+
+        .story__img {
+            width: 100%;
+            transition: all .1s;
+            /* -webkit-backface-visibility: hidden;
+            backface-visibility: hidden; */
+        }
+
+        .story__text {
+            transform: skewX(12deg);
+        }
+
+        .story__caption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* 先設20 用hover滑入 */
+            transform: translate(-50%, 20%);
+            color: #eee;
+            font-size: 1.7rem;
+            text-align: center;
+            opacity: 0;
+            transition: all .5s;
+            /* -webkit-backface-visibility: hidden;
+            backface-visibility: hidden; */
+        }
+
+        .story:hover .story__caption {
+            opacity: 1;
+            /* 不能用不同翻譯會異常 */
+            /* transform: translateY(-50%); */
+            transform: translate(-50%, -50%);
+        }
+
+        .story:hover .story__img {
+            transform: translateY(-4rem) scale(1);
+            filter: blur(3px) brightness(80%);
+        }
+
+        
+        /* 背景影片 */
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: .15;
+        }
+        .bg-video__content{
+            width: 100%;
+            height: 100%;
+            /* 處理影片超出 */
+            object-fit: cover;
+        }
+        /* L5 */
+        .section-book{
+            padding: 15rem 0;
+            background-image: linear-gradient(to right bottom , var(--color-primary-light), var(--color-primary-dark));
+
+        }
+        .book{
+            background-image: linear-gradient(105deg,
+                                rgba(255, 255, 255, 0.9)50%,
+                                rgba(237, 0, 0, 0.9)50%,
+                                transparent 50%),
+            url(../poto/pexels-aleksejs-bergmanis-681335.jpg);
+            background-size: 100%;
+            border-radius: 3px;
+            box-shadow: 0 1.5 4rem rgba(0,0,0,0.15);
+
+            height: 50rem;
+        }
+        .book__form{
+            width: 50%;
+            padding: 6rem;
+        }
+        /* .form{
+            
+        }
+        .form__group:not(:last-child){
+            margin-bottom: 2rem;
+        } */
+        .form__input{
+            font-size: 1.5rem;
+            font-family: inherit;
+            padding: 1.5rem 2rem; 
+            border-radius: 2px;
+            background-color: rgba(0,0,0,.5);
+            border: none;
+            border-bottom: 3px solid transparent;
+            width: 100%;
+            display: block;
+            transition: all .5s;
+        }
+        .from__input:focus{
+           outline: none;
+           box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+           border-bottom:3px solid #36dba4;
+        }
+        /* 輸入無效變色 */
+        .from__input:focus:invalid{
+           
+           border-bottom:3px solid rgb(222, 39, 85);
+        }
+        .from__label{
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-left: 2rem;
+            margin-top: .7rem;
+            display: block;
+            transform: all 3s;
+           
+        }
+
+        .from__input:placeholder-shown + .from__label{
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-4rem ) ;
+            
+        }
+
+        /* radio樣式 */
+        .from__radio-group{
+            width: 35%;
+            display: inline-block;
+        }
+        
+        .from__radio-input{
+            display: none;
+        }
+        .from__radio-label{
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            padding-left: 5rem;
+        }
+        .from__radio-button{
+            height: 3rem;
+            width: 3rem;
+            border: 5px solid var(--color-primary);
+            border-radius: 50%;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: - .4rem;
+        
+        }
+
+        .from__radio-button::after{
+            content: "";
+            display: block;
+            height: 1.3rem;
+            width: 1.3rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--color-primary);
+            opacity: 0;
+            transition: all .2s;
+
+        }
+
+        /* 用radio checked 調整自定義的原點 ~相鄰兄弟選擇 */
+        .from__radio-input:checked ~ .from__radio-label .from__radio-button::after{
+            opacity: 1;
+        }
+        .footer{
+            background-color: gray;
+            padding: 10rem 0;
+            font-size: 1.4rem;
+        }
+        .footer__logo-box{
+            text-align: center;
+            margin-bottom: 8rem;
+        }
+        .footer__logo{
+            width: 15rem;
+        }
+        .footer__navigation{
+            
+        }
+        .footer__list{
+            list-style: none;
+        }
+        .footer__item{
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
+        .footer__link{
+            
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-box">
+            <img src="/poto/logo.png" alt="LOGO" class="logo">
+        </div>
+        <div class="text-box">
+            <h1 class="heading-primary">
+                <span class="heading-primary-main">好玩</span>
+                <span class="heading-primary-sub">就去玩</span>
+            </h1>
+
+            <a href="#" class="btn btn-white btn-animated">按鈕</a>
+        </div>
+
+    </header>
+    <main>
+        <section class="section-about">
+            <div class="u-center-text u-margin-bottom-8">
+                <h2 class="heading-secondary">
+                    ABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGA
+                </h2>
+            </div>
+
+
+            <div class="row">
+                <div class="col-1-of-2">
+                    <h3 class="heading-tertiary">aaaaaaaaaaaa</h3>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta minus aliquid
+                        nam deserunt inventore assumenda magni, blanditiis quae amet ad suscipit ducimus neque ipsum
+                        quo, vero eligendi sit ullam odio.</p>
+
+                    <h3 class="heading-tertiary">aaaaaaaaaaaa</h3>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta minus aliquid
+                        nam deserunt inventore assumenda magni, blanditiis quae amet ad suscipit ducimus neque ipsum
+                        quo, vero eligendi sit ullam odio.</p>
+
+                    <a href="#" class="btn-text">LAAAAA&rarr;</a>
+
+                </div>
+
+                <div class="col-1-of-2">
+                    <div class="composition">
+                        <img src="../poto/p1.jpg" alt="" class="composition__photo composition__photo--p1">
+                        <img src="../poto/p2.jpg" alt="" class="composition__photo composition__photo--p2">
+                        <img src="../poto/p3.jpg" alt="" class="composition__photo composition__photo--p3">
+
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section class="section-features">
+            <div class="row">
+                <div class="col-1-of-4">
+                    <div class="feature-box">
+                        <i class="feature-box__icon icon-basic-world"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">EEEEEEEEEEE</h3>
+                        <p class="feature-box__text">
+                            um maxime tenetur consequatur aperiam sed natus sit enim porro!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-1-of-4">
+                    <div class="feature-box">
+                        <i class="feature-box__icon icon-basic-world"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">EEEEEEEEEEE</h3>
+                        <p class="feature-box__text">
+                            um maxime tenetur consequatur aperiam sed natus sit enim porro!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-1-of-4">
+                    <div class="feature-box">
+                        <i class="feature-box__icon icon-basic-world"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">EEEEEEEEEEE</h3>
+                        <p class="feature-box__text">
+                            um maxime tenetur consequatur aperiam sed natus sit enim porro!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-1-of-4">
+                    <div class="feature-box">
+                        <i class="feature-box__icon icon-basic-world"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">EEEEEEEEEEE</h3>
+                        <p class="feature-box__text">
+                            um maxime tenetur consequatur aperiam sed natus sit enim porro!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-tours">
+            <section class="section-about">
+                <div class="u-center-text u-margin-bottom-8">
+                    <h2 class="heading-secondary">
+                        ABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGA
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-1-of-3">
+                        <div class="card">
+                            <div class="card__side card__side--front">
+                                <div class="card__picture card__picture--1">
+                                    &nbsp;
+                                </div>
+                                <div class="card__heading">
+                                    <span class="card__heading-span card__heading-span-1">heading heading</span>
+                                </div>
+                                <div class="card__details">
+                                    <ul>
+                                        <li>3day</li>
+                                        <li>rp to people</li>
+                                        <li>rp to people</li>
+                                        <li>rp to people</li>
+                                        <li>rp to people</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card__side card__side--back card__side--back-1">
+                                <div class="card__cta">
+                                    <div class="card__price-box">
+                                        <p class="card__price-only">only</p>
+                                        <p class="card__price-value">$297</p>
+                                    </div>
+                                    <a href="#" class="btn btn-white">boot</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1-of-3"></div>
+                    <div class="col-1-of-3"></div>
+                </div>
+            </section>
+            <section class="section-stories">
+                <div class="bg-video">
+                    <video src="../viedo/highway.mp4" class="bg-video__content" autoplay muted loop>
+                        <!-- <source src="../viedo/highway.mp4" type="video/mp4"> -->
+                    </video>
+                </div>
+                <div class="u-center-text u-margin-bottom-8">
+                    <h2 class="heading-secondary">
+                        ABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGABCDEFGA
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="story">
+                        <figure class="story__shape">
+                            <img class="story__img" src="../poto/person.jpg" alt="">
+                            <figcaption class="story__caption">Mary</figcaption>
+                        </figure>
+                        <div class="story__text">
+                            <h3 class="heading-tertiary">i Mi M i M i M i M i M i M i M i M i M </h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicin dolor sit amet consectetur adipisicin
+                                dolor sit amet consectetur adipisicin dolor sit amet consectetur adipisicin dolor sit
+                                amet consectetur adipisicin dolor sit amet consectetur adipisicin dolor sit amet
+                                consectetur adipisicin dolor sit amet consectetur adipisicin dolor sit amet consectetur
+                                adipisicin dolor sit amet consectetur adipisicin dolor sit amet consectetur adipisicin
+                                dolor sit amet consectetur adipisicin dolor sit amet consectetur adipisicin dolor sit
+                                amet consectetur adipisicing elit. Accusamus labore nostrum cupiditate pariatur odio
+                                totam ratione at tempore dolorem quae, cumque ex accusantium, esse a tenetur beatae?
+                                Doloribus, laboriosam similique.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- L5 -->
+            <sectiom class="section-book">
+                <div class="row">
+                    <div class="book">
+                        <div class="book__form">
+                            <form action="#" class="from">
+                                <div class="u-center-text u-margin-bottom-8">
+                                    <h2 class="heading-secondary">
+                                       Sing in
+                                    </h2>
+                                </div>
+                                <div class="from__group">
+                                    <input type="text" class="from__input" placeholder="full Name" id="name" required>
+                                    <label for="name" class="from__label">Full Name</label>
+                                </div>
+
+                                <div class="from__group">
+                                    <input type="email" class="from__input" placeholder="full Name" id="email" required>
+                                    <label for="email" class="from__label">Email address</label>
+                                </div>
+
+                                <div class="from__radio-group">
+                                    <input type="radio" class="from__radio-input" id="small" name="size">
+                                    <label for="small" class="from__radio-label">
+                                        <span class="from__radio-button"></span>
+                                        small tour group</label>
+                                </div>
+
+                                
+                                <div class="from__radio-group">
+                                    <!-- css不能隱藏radio標籤 所以用隱藏樣式 label去點 -->
+                                    <input type="radio" class="from__radio-input" id="large" name="size">
+                                    <label for="large" class="from__radio-label">
+                                        <span class="from__radio-button"></span>
+                                        large tour group</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </sectiom>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__logo-box">
+            <img src="../poto/logo.png" alt="" class="footer__logo">
+        </div>
+        <div class="row">
+            <div class="col-1-of-2"></div>
+                <div class="footer__navigation">
+                    <ul class="footer__list">
+                        <li class="footer__item"><a href="#" class="footer__link">Company</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">Company2</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">Company3</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">Company4</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">Company5</a></li>
+
+                    </ul>
+                </div>
+            <div class="col-1-of-2">
+                <p class="footer__copyright">
+                    BBBBBBBBBBBB<a href="#" class="footer__link">Company5</a>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+</body>
+
+</html>

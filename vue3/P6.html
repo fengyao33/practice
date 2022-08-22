@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="Q">
+        <input type="text" v-model="addtext">
+        <button @click="saveInArray">Add Task</button>
+        <ul v-if="seeornot">
+            <li v-for="(one) in ttArray" :key="one">{{one}}</li>
+        </ul>
+        <button @click="togglesee">Hide/Show</button>    
+    </div>
+
+    <script>
+        const app={
+            data(){
+                return{
+                    addtext:'',
+                    ttArray:[],
+                    seeornot:true
+                }
+            },
+            methods:{
+                saveInArray(){
+                    this.ttArray.push(this.addtext);
+                },
+                togglesee(){
+                     this.seeornot = !this.seeornot 
+                    }
+               
+
+            }
+        }
+        Vue.createApp(app).mount('#Q')
+    </script>
+</body>
+</html>
